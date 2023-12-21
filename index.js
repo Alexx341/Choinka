@@ -4,9 +4,10 @@ document.getElementById("Ptwrdz").onclick= function(){
     q = parseInt(q);
     Choinka(q)
 }
+let canvas = document.getElementById('myCanvas');
+let context = canvas.getContext('2d');
 function Choinka(q){
-            let canvas = document.getElementById('myCanvas');
-        let context = canvas.getContext('2d');
+
     let px1 = 800, py1 = 1000;
     let px2 = 200, py2 = 1000;
     let px3 = canvas.width/2, py3 = px1-px2;
@@ -28,7 +29,39 @@ function Choinka(q){
         py3 = py3-height(px1, py1, px2, py2, px3, py3)/2;
     }
 }
+let chain = []
+canvas.onmousemove = function(e){
+    if(e.buttons == 1){
+        let pos = [e.offsetX,e.offsetY];
+        chain.push(pos);
+    }
 
+}
+function drawrandomchain(){
+    let ctx = canvas.getcontext("2d");
+    let r = Math.random(*255);
+    let g = Math.random; 
+    let b = Math.random; 
+    for (lamp of chain){
+       ctx.beginPath();
+       ctx.ellipse(lamp[0], lamp[1], 10, 10, 0,0, Math.PI * 2);
+       ctx.fillStyle = 
+       ctx.stroke();
+    }
+}
+setInterval()
+clearInterval()
+canvas.onclick = function(event){
+    let mouseX = event.offsetX;
+    let mouseY = event.offsetY;
+    context.beginPath();
+    context.ellipse(mouseX, mouseY, 30, 30, 0,0, Math.PI * 2);
+    context.stroke();
+    context.closePath();
+    context.fillStyle = 'red';
+    context.fill();
+    context.strokeStyle = 'red';
+}
 
 function height(px1, py1, px2, py2, px3, py3) {
 let a = Math.sqrt(Math.pow(px2 - px3, 2) + Math.pow(py2 - py3, 2));
